@@ -4,16 +4,17 @@ public class Hangman {
     public static void main(String[] args) {
         String inWord = "hangman";
         char[] word = new char[inWord.length()];
+        char[] answer = new char[inWord.length()];
         for(int i = 0; i < inWord.length(); i++)
         {
             word[i] = inWord.charAt(i);
+            answer[i] = '-';
         }
         Scanner sc = new Scanner(System.in);
         int difficulty = sc.nextInt();
-
-        mainGame(word, difficulty);
+        mainGame(word, answer, difficulty);
     }
-    static void mainGame(char[] word, int difficulty)
+    static void mainGame(char[] word, char[] answer, int difficulty)
     {
         while (true)
         {
@@ -23,9 +24,14 @@ public class Hangman {
             {
                 if(guess == word[i])
                 {
-                    
+                    answer[i] = guess;
+                }
+                else
+                {
+                    difficulty--;
                 }
             }
+            System.out.println(answer);
         }
     }
 }
