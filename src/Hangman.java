@@ -6,7 +6,11 @@ public class Hangman {
     }
     static void gameStarter()
     {
-        /*Hämta slumpat ord från fil*/
+        /*  -!To Do!-
+        *   Slumpade ord
+        *   Win-condition
+        *   Bättre UI
+        */
         String inWord = "hangman";
         char[] word = new char[inWord.length()];
         char[] answer = new char[inWord.length()];
@@ -16,14 +20,15 @@ public class Hangman {
             answer[i] = '-';
         }
         Scanner sc = new Scanner(System.in);
+        System.out.println("How many attempts?: ");
         int difficulty = sc.nextInt();
-        boolean playingGame = true;//Hitta bättre lösning
-        mainGame(word, answer, difficulty, playingGame);
+        System.out.println(answer);
+        mainGame(word, answer, difficulty);
     }
-    static void mainGame(char[] word, char[] answer, int difficulty, boolean playingGame)
+    static void mainGame(char[] word, char[] answer, int difficulty)
     {
         Scanner sc = new Scanner(System.in);
-        while (playingGame)
+        while (true)
         {
             boolean charFound = false;
             char guess = sc.next().charAt(0);
@@ -38,28 +43,27 @@ public class Hangman {
             if(!charFound)
             {
                 difficulty--;
-                if(!loseLife(difficulty, playingGame))
-                {
-                    playingGame = false;
-                }
+                loseLife(difficulty);
             }
             System.out.println(answer);
         }
     }
-    static boolean loseLife(int difficulty, boolean playingGame)
+    static void loseLife(int difficulty)
     {
         Scanner sc = new Scanner(System.in);
         System.out.println(difficulty);
         if(difficulty <= 0)
         {
             System.out.println("GAME OVER!\nPLAY AGAIN?\nY/N");
-            if(sc.nextLine().equals("Y"))
+            if(sc.next().toUpperCase().equals("Y"))
             {
                 gameStarter();
-                //playingGame = false;//Hitta bättre lösning
             }
-            /*Tillbaka till start menyn*/
+            else {
+                System.out.println("Thanks For Playing!");
+                sc.next();
+                System.exit(1);
+            }
         }
-        return playingGame;
     }
 }
