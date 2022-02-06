@@ -1,5 +1,6 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Hangman {
@@ -22,7 +23,6 @@ public class Hangman {
             answer[i] = '-';
         }
         Scanner sc = new Scanner(System.in);
-        System.out.println("How many attempts?: ");
         int difficulty = 8;
         System.out.println(answer);
         mainGame(word, answer, difficulty);
@@ -53,12 +53,21 @@ public class Hangman {
     static void loseLife(int difficulty)
     {
         Scanner sc = new Scanner(System.in);
-        //BufferedReader getMantxt = new BufferedReader(new FileReader("man.txt")); Få att fungera
         System.out.println(difficulty);
-        switch (difficulty)
+        String line;
+        File file = new File("man.txt");
+        try (BufferedReader br = new BufferedReader(new FileReader(file)))
         {
-            case 7:
-
+            for(int i=0; i<difficulty; i++)
+            {
+                br.readLine();
+            }
+            line = br.readLine();
+            System.out.println(line);
+        }
+        catch (IOException e)
+        {
+            System.out.println(e);
         }
         if(difficulty <= 0)
         {
