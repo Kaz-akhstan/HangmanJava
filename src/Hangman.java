@@ -19,14 +19,10 @@ public class Hangman {
     static void mainGame(char[] word, char[] answer, int difficulty, boolean playingGame)
     {
         Scanner sc = new Scanner(System.in);
-        while (true)
+        while (playingGame)
         {
-            if(!playingGame)
-            {
-                break;
-            }
             boolean charFound = false;
-            char guess = sc.nextLine().charAt(0);
+            char guess = sc.next().charAt(0);
             for(int i = 0; i < word.length; i++)
             {
                 if(guess == word[i])
@@ -37,15 +33,18 @@ public class Hangman {
             }
             if(!charFound)
             {
-                loseLife(difficulty, playingGame);
+                difficulty--;
+                if(!loseLife(difficulty, playingGame))
+                {
+                    playingGame = false;
+                }
             }
             System.out.println(answer);
         }
     }
-    static int loseLife(int difficulty, boolean playingGame)
+    static boolean loseLife(int difficulty, boolean playingGame)
     {
         Scanner sc = new Scanner(System.in);
-        difficulty--;
         System.out.println(difficulty);
         if(difficulty <= 0)
         {
@@ -56,6 +55,6 @@ public class Hangman {
             }
             /*Tillbaka till start menyn*/
         }
-        return difficulty--; //Returnar inte
+        return playingGame;
     }
 }
