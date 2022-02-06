@@ -2,6 +2,10 @@ import java.util.Scanner;
 
 public class Hangman {
     public static void main(String[] args) {
+        gameStarter();
+    }
+    static void gameStarter()
+    {
         /*Hämta slumpat ord från fil*/
         String inWord = "hangman";
         char[] word = new char[inWord.length()];
@@ -51,7 +55,8 @@ public class Hangman {
             System.out.println("GAME OVER!\nPLAY AGAIN?\nY/N");
             if(sc.nextLine().equals("Y"))
             {
-                playingGame = false;//Hitta bättre lösning
+                gameStarter();
+                //playingGame = false;//Hitta bättre lösning
             }
             /*Tillbaka till start menyn*/
         }
