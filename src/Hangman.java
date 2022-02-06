@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.Scanner;
 
 public class Hangman {
@@ -21,7 +23,7 @@ public class Hangman {
         }
         Scanner sc = new Scanner(System.in);
         System.out.println("How many attempts?: ");
-        int difficulty = sc.nextInt();
+        int difficulty = 8;
         System.out.println(answer);
         mainGame(word, answer, difficulty);
     }
@@ -51,7 +53,13 @@ public class Hangman {
     static void loseLife(int difficulty)
     {
         Scanner sc = new Scanner(System.in);
+        //BufferedReader getMantxt = new BufferedReader(new FileReader("man.txt")); Få att fungera
         System.out.println(difficulty);
+        switch (difficulty)
+        {
+            case 7:
+
+        }
         if(difficulty <= 0)
         {
             System.out.println("GAME OVER!\nPLAY AGAIN?\nY/N");
