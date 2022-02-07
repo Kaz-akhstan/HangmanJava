@@ -1,6 +1,4 @@
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Hangman {
@@ -23,7 +21,7 @@ public class Hangman {
             answer[i] = '-';
         }
         Scanner sc = new Scanner(System.in);
-        int difficulty = 8;
+        int difficulty = 7;
         System.out.println(answer);
         mainGame(word, answer, difficulty);
     }
@@ -33,7 +31,7 @@ public class Hangman {
         while (true)
         {
             boolean charFound = false;
-            char guess = sc.next().charAt(0);
+            char guess = sc.next().toLowerCase().charAt(0);
             for(int i = 0; i < word.length; i++)
             {
                 if(guess == word[i])
@@ -63,6 +61,7 @@ public class Hangman {
                 br.readLine();
             }
             line = br.readLine();
+            //line = "  +---+\n  |   |\n      |\n      |\n      |\n      |\n=========\n";
             System.out.println(line);
         }
         catch (IOException e)
