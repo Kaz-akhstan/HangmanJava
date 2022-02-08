@@ -53,16 +53,26 @@ public class Hangman {
         Scanner sc = new Scanner(System.in);
         System.out.println(difficulty);
         String line;
-        File file = new File("man.txt");
-        try (BufferedReader br = new BufferedReader(new FileReader(file)))
+        File file = new File("man-copy.txt");
+        int count = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(file)))  //Fungerar inte just nu, fixa
         {
-            for(int i=0; i<difficulty; i++)
+            while (br.readLine() != null)
             {
-                br.readLine();
+                line = br.readLine();
+                if(line.equals(Integer.toString(difficulty)))
+                {
+                    for (int j=0; j<8; j++)
+                    {
+                        line = br.readLine();
+                        System.out.println(line);
+                    }
+                }
+                else{
+                    br.readLine();
+                }
             }
-            line = br.readLine();
             //line = "  +---+\n  |   |\n      |\n      |\n      |\n      |\n=========\n";
-            System.out.println(line);
         }
         catch (IOException e)
         {
