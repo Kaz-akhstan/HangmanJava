@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HangmanJava:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/HangmanJava_jar</output-path>
+    <root id="archive" name="HangmanJava.jar">
+      <element id="module-output" name="HangmanJava" />
+      <element id="file-copy" path="$PROJECT_DIR$/wordList.txt" />
+    </root>
+  </artifact>
+</component>
